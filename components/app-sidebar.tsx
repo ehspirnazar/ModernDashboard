@@ -117,7 +117,7 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/profile/settings",
       icon: IconSettings,
     },
     {
@@ -150,7 +150,21 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ user, ...props }: { user?: any } & React.ComponentProps<typeof Sidebar>) {
+  const fallbackUser = {
+    name: "Guest",
+    email: "guest@example.com",
+    avatar: "/avatars/shadcn.jpg",  
+  };
+
+  const finalUser = user
+    ? {
+        name: `${user.first_name} ${user.last_name}`,
+        email: user.email,
+        avatar: user.avatar,
+      }
+    : fallbackUser;
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -162,7 +176,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             >
               <a href="#">
                 <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Moden Dashboard Inc.</span>
+                <span className="text-base font-semibold">Modern Dashboard Inc.</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -174,8 +188,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={finalUser} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

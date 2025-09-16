@@ -28,10 +28,13 @@ export async function registerReqres(email: string, password: string) {
   return res.json();
 }
 
-export async function fetchProtectedData(token: string) {
-  const res = await fetch("https://reqres.in/api/users/2", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export async function fetchProtectedData() {
+  const res = await fetch(
+    `https://reqres.in/api/users/${Math.floor(Math.random() * 10 )+ 1}`,
+    {
+      headers: { "x-api-key": "reqres-free-v1" },
+    }
+  );
   if (!res.ok) throw new Error("Not authorized");
   return res.json();
 }

@@ -1,14 +1,30 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
 import { DataTable } from "@/components/data-table";
 import { SectionCards } from "@/components/section-cards";
 import { SiteHeader } from "@/components/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import { useAuth } from "@/context/AuthContext";
+import { fetchProtectedData } from "@/lib/api";
 
 import data from "./data.json";
-import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function Page() {
+  const { token } = useAuth();
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    if (token) {
+      fetchProtectedData(token)
+        .then((res) => setUser(res.data)) // reqres returns { data: {...} }
+        .catch(() => setUser(null));
+    }
+  }, [token]);
+
   return (
     <ProtectedRoute>
       <SidebarProvider
@@ -19,7 +35,8 @@ export default function Page() {
           } as React.CSSProperties
         }
       >
-        <AppSidebar variant="inset" />
+        {/* 👇 pass user down */}
+        <AppSidebar user={user} variant="inset" />
         <SidebarInset>
           <SiteHeader />
           <div className="flex flex-1 flex-col">
