@@ -151,7 +151,7 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: { user?: any } & React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ ...props }: { user?: { name: string; email: string; avatar: string } } & React.ComponentProps<typeof Sidebar>) {
    const { profile } = useAuth();
 
   const user = {

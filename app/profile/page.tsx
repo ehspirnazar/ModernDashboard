@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -9,8 +9,7 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/context/AuthContext";
 
 export default function ProfilePage() {
-  const { profile, updateProfile, token } = useAuth();
-  const storageKey = token ? `profile_${token}` : "profile_guest";
+  const { profile, updateProfile } = useAuth();
 
   const [newName, setNewName] = useState("");
   const [newImage, setNewImage] = useState("");

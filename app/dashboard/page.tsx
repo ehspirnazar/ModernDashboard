@@ -15,7 +15,14 @@ import data from "./data.json";
 
 export default function Page() {
   const { token } = useAuth();
-  const [user, setUser] = useState<any>(null);
+  interface User {
+    id: number;
+    name: string;
+    email: string;
+    // Add other fields based on the structure of the user object
+  }
+
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     if (token) {
