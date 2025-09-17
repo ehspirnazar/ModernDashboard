@@ -151,7 +151,8 @@ const data = {
   ],
 }
 
-export function AppSidebar({ ...props }: { user?: { name: string; email: string; avatar: string } } & React.ComponentProps<typeof Sidebar>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function AppSidebar({ ...props }: { user?: any } & React.ComponentProps<typeof Sidebar>) {
    const { profile } = useAuth();
 
   const user = {
