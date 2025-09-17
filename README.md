@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Dashboard
 
-## Getting Started
+A responsive and modern dashboard built with **Next.js 15**, **TailwindCSS**, and **shadcn/ui**.  
+The project is connected to a **fake REST API** for data fetching, authentication simulation, and user management.
 
-First, run the development server:
+## 🚀 Features
+- 📊 Interactive dashboard with charts and stats  
+- 🔐 Login & token-based authentication (fake API)  
+- 👤 Profile page (rename user & update profile image on client-side)  
+- 🎨 Clean UI with shadcn/ui components  
+- 📱 Fully responsive design  
+- ⚡ Fast rendering with Next.js App Router  
 
+## 🛠️ Tech Stack
+- [Next.js 15](https://nextjs.org/)  
+- [TailwindCSS](https://tailwindcss.com/)  
+- [shadcn/ui](https://ui.shadcn.com/)  
+- Fake REST API (for authentication & data)  
+
+## 📂 Pages
+- `/` → Login with fake API  
+- `/dashboard` → Main dashboard with stats  
+- `/profile` → Update user info (name & profile image, client-side)  
+
+## 📸 Screenshots
+(Add 2–3 screenshots here)<img width="2540" height="1265" alt="Screenshot 2025-09-17 150129" src="https://github.com/user-attachments/assets/18e5e4bd-470c-4773-aa71-dd1189adfe46" />
+<img width="2559" height="1255" alt="Screenshot 2025-09-17 145853" src="https://github.com/user-attachments/assets/28085062-a84b-4242-9d65-f6e76fe74cac" />
+<img width="2542" height="1265" alt="Screenshot 2025-09-17 150148" src="https://github.com/user-attachments/assets/1dc76e43-d4ba-4c23-b88d-c97397c45364" />
+
+
+## 🔗 Demo
+[Live Demo on Vercel](https://modern-dashboard-theta.vercel.app/)
+
+## 🧑‍💻 Getting Started
 ```bash
+git clone https://github.com/your-username/modern-dashboard.git
+cd modern-dashboard
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
