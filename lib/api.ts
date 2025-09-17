@@ -30,7 +30,7 @@ export async function registerReqres(email: string, password: string) {
 
 export async function fetchProtectedData() {
   const res = await fetch(
-    `https://reqres.in/api/users/${Math.floor(Math.random() * 10 )+ 1}`,
+    `https://reqres.in/api/users/2`,
     {
       headers: { "x-api-key": "reqres-free-v1" },
     }

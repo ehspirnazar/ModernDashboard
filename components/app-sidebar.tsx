@@ -32,6 +32,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useAuth } from "@/context/AuthContext"
 
 const data = {
   user: {
@@ -150,20 +151,14 @@ const data = {
   ],
 }
 
-export function AppSidebar({ user, ...props }: { user?: any } & React.ComponentProps<typeof Sidebar>) {
-  const fallbackUser = {
-    name: "Guest",
-    email: "guest@example.com",
-    avatar: "/avatars/shadcn.jpg",  
-  };
+export function AppSidebar({ ...props }: { user?: any } & React.ComponentProps<typeof Sidebar>) {
+   const { profile } = useAuth();
 
-  const finalUser = user
-    ? {
-        name: `${user.first_name} ${user.last_name}`,
-        email: user.email,
-        avatar: user.avatar,
-      }
-    : fallbackUser;
+  const user = {
+    name: profile?.name || "Guest User",
+    email: profile?.email || "",
+    avatar: profile?.image || "/default-avatar.png",
+  };
 
   return (
     <Sidebar collapsible="offcanvas" {...props}>
@@ -188,7 +183,7 @@ export function AppSidebar({ user, ...props }: { user?: any } & React.ComponentP
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={finalUser} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   );
